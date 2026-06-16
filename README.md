@@ -1,5 +1,7 @@
 # cheque-mcp
 
+> **MCP companion for [Cheque Tracker](https://github.com/vikashpatel04/Cheque-Tracker)** — the full UI and application lives there. This repo adds an AI layer on top of the same Supabase database.
+
 A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that gives AI agents full visibility into a cheque tracking business — due dates, overdue cheques, party management, deposit logs, and status updates — all backed by Supabase.
 
 Built to work with **Claude Desktop**, **OpenClaw**, and any MCP-compatible AI client.
@@ -30,7 +32,7 @@ Once connected, your AI agent can answer questions and take actions like:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/cheque-mcp.git
+git clone https://github.com/vikashpatel04/cheque-mcp.git
 cd cheque-mcp
 
 # 2. Install dependencies
