@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "cheque-mcp": {
+      "command": "node",
+      "args": ["/absolute/path/to/cheque-mcp/dist/index.js"],
+      "env": {
+        "SUPABASE_URL": "https://your-project.supabase.co",
+        "SUPABASE_SERVICE_ROLE_KEY": "your_service_role_key_here",
+        "SHOP_USER_ID": "your_shop_user_id_here"
+      }
+    }
+  }
+}
