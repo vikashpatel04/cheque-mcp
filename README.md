@@ -1,8 +1,8 @@
 # cheque-mcp
 
-> **MCP companion for [Cheque Tracker](https://github.com/vikashpatel04/Cheque-Tracker)** — the full UI and application lives there. This repo adds an AI layer on top of the same Supabase database.
+> **MCP companion for [Cheque Tracker](https://github.com/vikashpatel04/Cheque-Tracker)** - the full UI and application lives there. This repo adds an AI layer on top of the same Supabase database.
 
-A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that gives AI agents full visibility into a cheque tracking business — due dates, overdue cheques, party management, deposit logs, and status updates — all backed by Supabase.
+A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that gives AI agents full visibility into a cheque tracking business - due dates, overdue cheques, party management, deposit logs, and status updates - all backed by Supabase.
 
 Built to work with **Claude Desktop**, **OpenClaw**, and any MCP-compatible AI client.
 
@@ -15,8 +15,8 @@ Once connected, your AI agent can answer questions and take actions like:
 - *"Which cheques are due in the next 3 days?"*
 - *"Show me all overdue cheques and the total amount at risk."*
 - *"Add a cheque for Sharma Traders, ₹45,000, due 2026-07-15."*
-- *"Mark cheque 004521 as returned — it bounced."*
-- *"Give me a summary of the business — how much is pending?"*
+- *"Mark cheque 004521 as returned - it bounced."*
+- *"Give me a summary of the business - how much is pending?"*
 
 ---
 
@@ -114,9 +114,9 @@ realpath dist/index.js
 
 ### 3. Edit your AI client config
 
-**Claude Desktop** — edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+**Claude Desktop** - edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
 
-**OpenClaw** — edit `~/.openclaw/config.json`:
+**OpenClaw** - edit `~/.openclaw/config.json`:
 
 ```json
 {
@@ -134,7 +134,7 @@ realpath dist/index.js
 }
 ```
 
-> You can put credentials in the `"env"` block (as above) **or** put them in the `.env` file — whichever you prefer. If you use `.env`, you can omit the `"env"` block from the config.
+> You can put credentials in the `"env"` block (as above) **or** put them in the `.env` file - whichever you prefer. If you use `.env`, you can omit the `"env"` block from the config.
 
 ### 4. Restart your AI client
 
@@ -149,7 +149,7 @@ The server will connect automatically. You should see `cheque-mcp` listed in the
 | `get_due_cheques` | Cheques due within the next N days (default: 3). Returns PENDING and DEPOSITED cheques. |
 | `get_overdue_cheques` | All PENDING cheques past their due date, sorted oldest first. Includes total overdue amount. |
 | `get_all_cheques` | List cheques with optional filters: `status`, `party_name` (partial), `limit` (max 50). |
-| `get_cheque_summary` | Business dashboard — counts and totals by status, overdue, due today, due this week. |
+| `get_cheque_summary` | Business dashboard - counts and totals by status, overdue, due today, due this week. |
 | `add_cheque` | Add a new cheque. Looks up party by name; errors clearly if not found. |
 | `update_cheque_status` | Change status with transition validation. Logs every change to `cheque_history`. |
 | `get_parties` | List active parties with optional name search. |
@@ -160,17 +160,17 @@ The server will connect automatically. You should see `cheque-mcp` listed in the
 ## Status Transitions
 
 ```
-PENDING   ──→  DEPOSITED
-          ──→  RETURNED   (reason required)
-          ──→  CANCELLED
+PENDING   →  DEPOSITED
+          →  RETURNED   (reason required)
+          →  CANCELLED
 
-DEPOSITED ──→  PASSED
-          ──→  RETURNED   (reason required)
-          ──→  CANCELLED
+DEPOSITED →  PASSED
+          →  RETURNED   (reason required)
+          →  CANCELLED
 
-PASSED    ──→  (terminal — no further transitions)
-RETURNED  ──→  (terminal)
-CANCELLED ──→  (terminal)
+PASSED    →  (terminal - no further transitions)
+RETURNED  →  (terminal)
+CANCELLED →  (terminal)
 ```
 
 Every `update_cheque_status` call inserts a row into `cheque_history` with `changed_by = 'velo'` so you have a full audit trail.
@@ -209,18 +209,18 @@ npm start
 
 ```
 src/
-  index.ts          — MCP server entry point
-  supabase.ts       — Supabase client (service role)
-  utils.ts          — Currency + date formatting helpers
+  index.ts          - MCP server entry point
+  supabase.ts       - Supabase client (service role)
+  utils.ts          - Currency + date formatting helpers
   tools/
-    cheques.ts      — 7 cheque and deposit tools
-    parties.ts      — Party lookup tool
-schema.sql          — Database schema (run once in Supabase)
-.env.example        — Environment variable template
+    cheques.ts      - 7 cheque and deposit tools
+    parties.ts      - Party lookup tool
+schema.sql          - Database schema (run once in Supabase)
+.env.example        - Environment variable template
 ```
 
 ---
 
 ## License
 
-MIT — see [LICENSE](./LICENSE)
+MIT - see [LICENSE](./LICENSE)
